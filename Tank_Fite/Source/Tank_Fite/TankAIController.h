@@ -19,7 +19,13 @@ class TANK_FITE_API ATankAIController : public AAIController
 	
 public:
 
+	
+
+	virtual void BeginPlay() override;
+
+private:
+
 	ATank* GetControlledTank() const;
 
-	void BeginPlay() override;
+	ATank* GetPlayerTank() const;
 };
