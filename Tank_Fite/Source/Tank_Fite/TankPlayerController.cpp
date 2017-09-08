@@ -3,6 +3,7 @@
 #include "TankPlayerController.h"
 #include "Tank_Fite.h"
 
+
 /* ATankPlayerController::ATankPlayerController()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -28,8 +29,6 @@ void ATankPlayerController::Tick(float Deltatime)
 	Super::Tick(Deltatime);
 
 	AimTowardsCrosshair();
-
-	UE_LOG(LogTemp, Warning, TEXT("Tick."));	
 	
 } 
 
@@ -42,7 +41,19 @@ void ATankPlayerController::AimTowardsCrosshair()
 {
 	if (!GetControlledTank()) { return; }
 
-	//get world location if line trace through crosshair
-	// if it hits the landscape
-		//then we want the controlled tank to aim at this point
+	FVector OutHitLocation; // Out parameter
+	if (GetSightRayHitLocation(OutHitLocation)) // has "side effect" of ray tracing
+	{
+		UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *OutHitLocation.ToString());
+
+			//then we want the controlled tank to aim at this point
+	}
+}
+
+//get world location of line trace through crosshair, true if hits landscape
+bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
+{
+	OutHitLocation = FVector(1.0); // OutParameter
+
+	return false;
 }
