@@ -19,8 +19,8 @@ class TANK_FITE_API ATankAIController : public AAIController
 	
 public:
 
+	virtual void Tick(float Deltatime) override;
 	
-
 	virtual void BeginPlay() override;
 
 private:
@@ -28,4 +28,5 @@ private:
 	ATank* GetControlledTank() const;
 
 	ATank* GetPlayerTank() const;
+
 };
