@@ -44,8 +44,8 @@ void ATankPlayerController::AimTowardsCrosshair()
 	FVector HitLocation; // Out parameter
 	if (GetSightRayHitLocation(HitLocation)) // has "side effect" of ray tracing
 	{
+		//GetControlledTank()->FindComponentByClass<UTankAimingComponent>()->AimAt(HitLocation);
 		GetControlledTank()->AimAt(HitLocation);
-
 		//TODO then we want the controlled tank to aim at this point
 	}
 }

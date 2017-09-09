@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Tank_Fite.h"
 #include "Tank.h"
+#include "TankAimingComponent.h"
 #include "CollisionQueryParams.h"
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
@@ -29,7 +30,6 @@ private:
 	// ATankPlayerController();
 
 	ATank* GetControlledTank() const;
-
 
 	//Start the tank moving the barrel to that a shot would hit where the crosshair
 	// intersects the world

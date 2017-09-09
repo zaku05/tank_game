@@ -11,11 +11,11 @@ void ATankAIController::BeginPlay()
 	auto PlayerTank = GetPlayerTank();
 	if (!PlayerTank)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("AI Controller cant find player tank."));
+		//UE_LOG(LogTemp, Warning, TEXT("AI Controller cant find player tank."));
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("AI reports player is controlling %s"), *(PlayerTank->GetName()));
+		//UE_LOG(LogTemp, Warning, TEXT("AI reports player is controlling %s"), *(PlayerTank->GetName()));
 	}
 
 }
@@ -27,7 +27,7 @@ void ATankAIController::Tick(float Deltatime)
 	if (GetPlayerTank())
 	{
 		// TODO move towards player
-		GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation()); // aim at player
+		GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
 		// fire
 
 		// AimTowardsCrosshair();
