@@ -36,5 +36,7 @@ public:
 	void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
 
 private:
-	
+	UPROPERTY(EditAnyWhere, Category = Firing)
+	float LaunchSpeed = 100000.0f; // TODO find sensible default
+
 };
