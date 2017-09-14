@@ -4,11 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Tank_Fite.h"
-#include "Tank.h"
-#include "TankAimingComponent.h"
 #include "CollisionQueryParams.h"
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
+
+//Forward declarations
+class ATank;
+
 
 /**
  * 

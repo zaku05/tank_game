@@ -7,7 +7,6 @@
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Classes/Kismet/GameplayStaticsTypes.h"
 #include "Kismet/GameplayStatics.h"
-#include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
 #include "TankAimingComponent.generated.h"
 // Forward Declaration
 class UTankBarrel; 

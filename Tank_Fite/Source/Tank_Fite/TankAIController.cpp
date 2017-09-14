@@ -2,6 +2,8 @@
 
 #include "TankAIController.h"
 #include "Tank_Fite.h"
+#include "Tank.h"
+#include "TankAimingComponent.h"
 
 void ATankAIController::BeginPlay()
 {

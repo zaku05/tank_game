@@ -4,11 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "Tank_Fite.h"
-#include "Tank.h"
-#include "TankAimingComponent.h"
 #include "AIController.h"
 #include "TankAIController.generated.h"
 
+//Forward declarations
+class UTankAimingComponent;
+class ATank;
 /**
  * 
  */
