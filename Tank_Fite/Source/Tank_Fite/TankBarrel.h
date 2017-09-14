@@ -17,7 +17,7 @@ class TANK_FITE_API UTankBarrel : public UStaticMeshComponent
 public:
 	// -1 is max downward movement, +1 is max upward movement
 	void Elevate(float RelativeSpeed);
-	
+
 private:
 	UPROPERTY(EditAnywhere, Category = Setup)
 	float MaxDegreesPerSecond = 5; // Sensible default
