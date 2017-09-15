@@ -9,6 +9,7 @@
 class UTankBarrel; // Forward Declaration
 class UTankAimingComponent;
 class UTankTurretSM;
+class AProjectile;
 
 UCLASS()
 class TANK_FITE_API ATank : public APawn
@@ -44,4 +45,8 @@ private:
 	UPROPERTY(EditAnyWhere, Category = Firing)
 	float LaunchSpeed = 5000.0f; 
 
+	UPROPERTY(EditAnyWhere, Category = Setup)
+	TSubclassOf<AProjectile> ProjectileBluePrint;
+
+	UTankBarrel* Barrel = nullptr;
 };
