@@ -27,7 +27,6 @@ public:
 
 	void SetTurretReference(UTankTurretSM* TurretToSet);
 
-	// TODO add SetTurrent reference
 
 protected:
 
