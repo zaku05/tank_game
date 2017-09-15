@@ -22,7 +22,7 @@ void ATankAIController::Tick(float Deltatime)
 		// TODO move towards player
 		AITank->AimAt(PlayerTank->GetActorLocation());
 
-		AITank->Fire(); // TODO dont fire every frame
+		AITank->Fire(); 
 	}
 }
 
