@@ -27,8 +27,8 @@ public:
 
 private:
 
-	ATank* GetControlledTank() const;
+	// ATank* GetControlledTank() const;
 
-	ATank* GetPlayerTank() const;
+	// ATank* GetPlayerTank() const;
 
 };

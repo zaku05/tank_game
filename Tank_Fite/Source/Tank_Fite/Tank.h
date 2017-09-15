@@ -49,4 +49,8 @@ private:
 	TSubclassOf<AProjectile> ProjectileBluePrint;
 
 	UTankBarrel* Barrel = nullptr;
+
+	float ReloadTimeinSeconds = 3.0f;
+
+	double LastFireTime = 0;
 };
