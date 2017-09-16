@@ -29,7 +29,11 @@ void UTankMovementComponent::IntendTurnRight(float Throw)
 void UTankMovementComponent::RequestDirectMove(const FVector & MoveVelocity, bool bForceMaxSpeed)
 {
 	// no need to call Super, we are replacing the functionality
-	auto TankName = GetOwner()->GetName();
-	auto MoveVelocityString = MoveVelocity.ToString();
-	UE_LOG(LogTemp, Warning, TEXT(" %s is moving to: %s"), *TankName, *MoveVelocityString)
+	auto TankForward = GetOwner()->GetActorForwardVector().GetSafeNormal();
+	auto AIForwardIntention = MoveVelocity.GetSafeNormal();
+	auto ForwardIntention = FVector::DotProduct(AIForwardIntention, TankForward);
+	auto TurnIntention = FVector::CrossProduct(TankForward, AIForwardIntention).Z;
+	IntendMoveForward(ForwardIntention);
+	UE_LOG(LogTemp, Warning, TEXT("Turn Intention is %f"), TurnIntention)
+	IntendTurnRight(TurnIntention);
 }
