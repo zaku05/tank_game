@@ -14,14 +14,14 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = false;
 
 	// no need to protect pointers as added at construction
-	UE_LOG(LogTemp, Warning, TEXT("WOOP: Tank CONSTRUCTED"))
+	UE_LOG(LogTemp, Warning, TEXT("WOOP: Tank CONSTRUCTED C++"))
 
 }
 
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogTemp, Warning, TEXT("WOOP: Tank BEGIN PLAY"))
+	UE_LOG(LogTemp, Warning, TEXT("WOOP: Tank BEGIN PLAY C++"))
 }
 
 void ATank::AimAt(FVector HitLocation)

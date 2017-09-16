@@ -15,14 +15,6 @@ void ATankPlayerController::BeginPlay()
 	Super::BeginPlay();
 
 	auto ControlledTank = GetControlledTank();
-	if (!ControlledTank)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("No Controller for tank found!"))
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("PlayerController is controlling %s"), *(ControlledTank->GetName()))
-	}
 }
 
 void ATankPlayerController::Tick(float Deltatime)
