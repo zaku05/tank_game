@@ -27,11 +27,14 @@ public:
 
 	virtual void Tick(float Deltatime) override;
 
+
+protected:
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+		ATank* GetControlledTank() const;
+
 private:
 
 	// ATankPlayerController();
-
-	ATank* GetControlledTank() const;
 
 	//Start the tank moving the barrel to that a shot would hit where the crosshair
 	// intersects the world
