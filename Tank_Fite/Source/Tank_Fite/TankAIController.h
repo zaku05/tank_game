@@ -26,6 +26,8 @@ public:
 	virtual void BeginPlay() override;
 
 private:
+	// This is how close the ai can get to the player
+	float AcceptanceRadius = 3000.0f;
 
 	// ATank* GetControlledTank() const;
 
