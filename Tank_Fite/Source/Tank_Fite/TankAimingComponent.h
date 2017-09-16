@@ -31,21 +31,21 @@ class TANK_FITE_API UTankAimingComponent : public UActorComponent
 	GENERATED_BODY()
 
 public:	
-	// Sets default values for this component's properties
-	UTankAimingComponent();
 
-	UFUNCTION(BlueprintCallable, Category = Setup)
+	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Initialize(UTankBarrel* BarrelToSet, UTankTurretSM* TurretToSet);
+
+	virtual void AimAt(FVector HitLocation, float LaunchSpeed);
 
 protected:
 
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 	EFiringState FiringState = EFiringState::Aiming;
 
-public:	
-	virtual void AimAt(FVector HitLocation, float LaunchSpeed);
-
 private: 
+	// Sets default values for this component's properties
+	UTankAimingComponent();
+
 	UTankBarrel* Barrel = nullptr;
 	
 	UTankTurretSM* Turret = nullptr;
