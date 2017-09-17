@@ -4,7 +4,6 @@
 #include "Tank.h"
 #include "Projectile.h"
 #include "TankBarrel.h"
-#include "TankMovementComponent.h"
 #include "TankAimingComponent.h"
 
 // Sets default values
@@ -14,27 +13,25 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = false;
 
 	// no need to protect pointers as added at construction
-	UE_LOG(LogTemp, Warning, TEXT("WOOP: Tank CONSTRUCTED C++"))
-
 }
 
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogTemp, Warning, TEXT("WOOP: Tank BEGIN PLAY C++"))
 }
 
 void ATank::AimAt(FVector HitLocation)
 {
-	if (!TankAimingComponent) { return; }
+	if (!ensure(TankAimingComponent)) { return; }
 	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
 void ATank::Fire()
 {
+	if (!ensure(Barrel)) { return; }
 	bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeinSeconds;
 
-	if (Barrel && isReloaded) {
+	if (isReloaded) {
 
 		// Spawn projectile
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>(

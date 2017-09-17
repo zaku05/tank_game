@@ -4,6 +4,7 @@
 #include "Tank_Fite.h"
 #include "Tank.h"
 #include "TankAimingComponent.h"
+//depends on movement component via pathfinding system
 
 void ATankAIController::BeginPlay()
 {
@@ -17,7 +18,7 @@ void ATankAIController::Tick(float Deltatime)
 
 	auto PlayerTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
 	auto AITank = Cast<ATank>(GetPawn());
-	if (PlayerTank)
+	if (ensure(PlayerTank))
 	{
 		MoveToActor(PlayerTank, AcceptanceRadius);
 
