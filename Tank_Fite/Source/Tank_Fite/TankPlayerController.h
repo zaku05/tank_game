@@ -9,9 +9,7 @@
 #include "TankPlayerController.generated.h"
 
 //Forward declarations
-class ATank;
 class UTankAimingComponent;
-
 
 /**
  * 
@@ -30,8 +28,6 @@ public:
 
 
 protected:
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-		ATank* GetControlledTank() const;
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
 		void FoundAimingComponent(UTankAimingComponent* AimCompRef);
@@ -59,7 +55,5 @@ private:
 	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
 	
 	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
-
-
 
 };
