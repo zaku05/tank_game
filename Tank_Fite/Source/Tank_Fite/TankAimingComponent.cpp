@@ -26,8 +26,6 @@ void UTankAimingComponent::BeginPlay()
 	// so that first fire is after initial reload
 	Super::BeginPlay();
 	LastFireTime = FPlatformTime::Seconds();
-	UE_LOG(LogTemp, Warning, TEXT("BeginPlay LastFireTime: %d"), LastFireTime)
-
 }
 
 void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction * ThisTickFunction)
