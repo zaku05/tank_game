@@ -38,6 +38,8 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void Fire();
+	
+	bool IsBarrelMoving();
 
 protected:
 
@@ -70,4 +72,5 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float ReloadTimeinSeconds = 3.0f;
 
+	FVector AimDirection;
 };
