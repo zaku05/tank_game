@@ -31,4 +31,8 @@ private:
 	UTankTrack();
 
 	void ApplySidewaysForce();
+
+	void DriveTrack();
+
+	float CurrentThrottle = 0;
 };

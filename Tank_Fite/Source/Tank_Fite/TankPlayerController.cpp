@@ -38,7 +38,9 @@ void ATankPlayerController::AimTowardsCrosshair()
 	if (!(GetPawn())) { return; }
 
 	FVector HitLocation; // Out parameter
-	if (GetSightRayHitLocation(HitLocation)) // has "side effect" of ray tracing
+	bool bGotHitLocation = GetSightRayHitLocation(HitLocation);
+	UE_LOG(LogTemp, Warning, TEXT("GotHitLocation: %i"), bGotHitLocation)
+	if (bGotHitLocation) // has "side effect" of ray tracing
 	{
 		//GetControlledTank()->FindComponentByClass<UTankAimingComponent>()->AimAt(HitLocation);
 		GetPawn()->FindComponentByClass<UTankAimingComponent>()->AimAt(HitLocation);
@@ -60,9 +62,9 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 	FVector LookDirection;
 	if (GetLookDirection(ScreenLocation, LookDirection))
 	{
-		GetLookVectorHitLocation(LookDirection, HitLocation);
+		return GetLookVectorHitLocation(LookDirection, HitLocation);
 	}
-	return true;
+	return false;
 }
 
 bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const

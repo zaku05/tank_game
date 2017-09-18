@@ -16,8 +16,10 @@ void UTankTrack::BeginPlay()
 void UTankTrack::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
 {
 	// drive the tracks
+	DriveTrack();
 	//apply the sideways force
 	ApplySidewaysForce();
+	CurrentThrottle = 0;
 }
 
 void UTankTrack::ApplySidewaysForce()
@@ -33,12 +35,15 @@ void UTankTrack::ApplySidewaysForce()
 }
 void UTankTrack::SetThrottle(float Throttle)
 {
-	
-	auto ClampedThrottle = FMath::Clamp<float>(Throttle, -1, 1);
+	CurrentThrottle = FMath::Clamp<float>(CurrentThrottle + Throttle, -1, 1);
+	DriveTrack();
+}
 
-	auto ForceApplied = GetForwardVector() * ClampedThrottle * TrackMaxDrivingForce;
+void UTankTrack::DriveTrack()
+{
+	auto ForceApplied = GetForwardVector() * CurrentThrottle * TrackMaxDrivingForce;
 	auto ForceLocation = GetComponentLocation();
 	auto TankRoot = Cast<UPrimitiveComponent>(GetOwner()->GetRootComponent());
 	TankRoot->AddForceAtLocation(ForceApplied, ForceLocation);
-}
 
+}
