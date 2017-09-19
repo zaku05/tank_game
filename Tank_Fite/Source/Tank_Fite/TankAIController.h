@@ -24,9 +24,12 @@ public:
 	
 	virtual void BeginPlay() override;
 
+protected:
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	float AcceptanceRadius = 8000.0f;
+
 private:
 	// This is how close the ai can get to the player
-	float AcceptanceRadius = 3000.0f;
 
 	// ATank* GetControlledTank() const;
 

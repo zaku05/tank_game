@@ -39,7 +39,6 @@ void ATankPlayerController::AimTowardsCrosshair()
 
 	FVector HitLocation; // Out parameter
 	bool bGotHitLocation = GetSightRayHitLocation(HitLocation);
-	UE_LOG(LogTemp, Warning, TEXT("GotHitLocation: %i"), bGotHitLocation)
 	if (bGotHitLocation) // has "side effect" of ray tracing
 	{
 		//GetControlledTank()->FindComponentByClass<UTankAimingComponent>()->AimAt(HitLocation);
