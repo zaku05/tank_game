@@ -22,7 +22,10 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	UProjectileMovementComponent* ProjectileMovementComponent = nullptr;
-
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UStaticMeshComponent* CollisionMesh = nullptr;
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UParticleSystemComponent* LaunchBlast = nullptr;
 
 public:	
 	// Called every frame
@@ -30,9 +33,6 @@ public:
 
 private:
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
-		UStaticMeshComponent* CollisionMesh = nullptr;
-	UPROPERTY(VisibleAnywhere, Category = "Components")
-		UParticleSystemComponent* LaunchBlast = nullptr;
+
 
 };
