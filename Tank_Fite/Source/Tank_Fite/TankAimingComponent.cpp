@@ -31,7 +31,11 @@ void UTankAimingComponent::BeginPlay()
 void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction * ThisTickFunction)
 {
 	// UE_LOG(LogTemp, Warning, TEXT("Aiming Comp ticking"))
-	if ((FPlatformTime::Seconds() - LastFireTime) < ReloadTimeinSeconds)
+	if (AmmoCount <= 0)
+	{
+		FiringState = EFiringState::NoAmmo;
+	}
+	else if ((FPlatformTime::Seconds() - LastFireTime) < ReloadTimeinSeconds)
 	{
 		FiringState = EFiringState::Reloading;
 	}
@@ -48,6 +52,11 @@ void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 EFiringState UTankAimingComponent::GetFiringState() const
 {
 	return FiringState;
+}
+
+int UTankAimingComponent::GetAmmoCount() const
+{
+	return AmmoCount;
 }
 
 void UTankAimingComponent::Initialize(UTankBarrel* BarrelToSet, UTankTurretSM* TurretToSet)
@@ -106,7 +115,7 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 void UTankAimingComponent::Fire()
 {
 	if (!ensure(Barrel && ProjectileBluePrint)) { return; }
-	if (FiringState != EFiringState::Reloading)
+	if (FiringState == EFiringState::Ready || FiringState == EFiringState::Aiming)
 	 {
 
 		// Spawn projectile
@@ -117,6 +126,7 @@ void UTankAimingComponent::Fire()
 
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = FPlatformTime::Seconds();
+		AmmoCount--;
 	}
 }
 
