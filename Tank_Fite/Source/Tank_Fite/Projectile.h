@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "PhysicsEngine/RadialForceComponent.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Runtime/Engine/Classes/GameFramework/ProjectileMovementComponent.h"
 #include "Projectile.generated.h"
 
@@ -26,6 +28,14 @@ protected:
 	UStaticMeshComponent* CollisionMesh = nullptr;
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UParticleSystemComponent* LaunchBlast = nullptr;
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UParticleSystemComponent* ImpactBlast = nullptr;
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	URadialForceComponent* ExplosionForce = nullptr;
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	float DestroyDelay = 10.0f;
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	float ProjectileDamage = 20.0f;
 
 public:	
 	// Called every frame
@@ -33,6 +43,9 @@ public:
 
 private:
 
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
 
+	void OnTimerExpire();
 
 };
