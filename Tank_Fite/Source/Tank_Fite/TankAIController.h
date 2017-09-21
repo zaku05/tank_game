@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Tank_Fite.h"
 #include "AIController.h"
+#include "Runtime/Engine/Classes/GameFramework/Pawn.h"
 #include "TankAIController.generated.h"
 
 //Forward declarations
@@ -35,11 +36,5 @@ private:
 
 	UFUNCTION()
 	void OnPossessedTankDeath();
-
-	// This is how close the ai can get to the player
-
-	// ATank* GetControlledTank() const;
-
-	// ATank* GetPlayerTank() const;
 
 };

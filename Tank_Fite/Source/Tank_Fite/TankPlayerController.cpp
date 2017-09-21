@@ -44,7 +44,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	{
 		//GetControlledTank()->FindComponentByClass<UTankAimingComponent>()->AimAt(HitLocation);
 		GetPawn()->FindComponentByClass<UTankAimingComponent>()->AimAt(HitLocation);
-		//TODO then we want the controlled tank to aim at this point
+		// then we want the controlled tank to aim at this point
 	}
 }
 
@@ -114,6 +114,6 @@ bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& 
 
  void ATankPlayerController::OnPossessedTankDeath()
  {
-	 UE_LOG(LogTemp, Warning, TEXT("MAN DOWN"))
+	 StartSpectatingOnly();
  }
 
