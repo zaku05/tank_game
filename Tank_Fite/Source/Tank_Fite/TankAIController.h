@@ -9,6 +9,8 @@
 
 //Forward declarations
 class UTankAimingComponent;
+class UTank;
+
 /**
  * 
  */
@@ -17,18 +19,23 @@ UCLASS()
 class TANK_FITE_API ATankAIController : public AAIController
 {
 	GENERATED_BODY()
-	
-public:
 
-	virtual void Tick(float Deltatime) override;
-	
-	virtual void BeginPlay() override;
+public:
 
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	float AcceptanceRadius = 8000.0f;
 
 private:
+	virtual void Tick(float Deltatime) override;
+	
+	virtual void BeginPlay() override;
+	
+	virtual void SetPawn(APawn* InPawn) override;
+
+	UFUNCTION()
+	void OnPossessedTankDeath();
+
 	// This is how close the ai can get to the player
 
 	// ATank* GetControlledTank() const;

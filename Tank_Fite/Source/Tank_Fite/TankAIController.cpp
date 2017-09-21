@@ -3,6 +3,7 @@
 #include "TankAIController.h"
 #include "Tank_Fite.h"
 #include "TankAimingComponent.h"
+#include "Tank.h" // so we can implement OnDeath()
 //depends on movement component via pathfinding system
 
 void ATankAIController::BeginPlay()
@@ -10,6 +11,22 @@ void ATankAIController::BeginPlay()
 	Super::BeginPlay();
 }
 
+void ATankAIController::SetPawn(APawn* InPawn)
+{
+	Super::SetPawn(InPawn);
+	if (InPawn)
+	{
+		auto PossessedTank = Cast<ATank>(InPawn);
+		if (!ensure(PossessedTank)) { return; }
+
+		PossessedTank->OnDeath.AddUniqueDynamic(this, &ATankAIController::OnPossessedTankDeath);
+	}
+}
+
+void ATankAIController::OnPossessedTankDeath()
+{
+	UE_LOG(LogTemp, Warning, TEXT("IM DED"))
+}
 void ATankAIController::Tick(float Deltatime)
 {
 	Super::Tick(Deltatime);
